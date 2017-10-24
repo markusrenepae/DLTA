@@ -1,39 +1,39 @@
-import pyautogui
+import datetime
 import time
 import matplotlib.pyplot as plt
 import numpy as np
-import datetime
-
+import pyautogui
+import Calvar as var
 
 def move_cursor():
-    pyautogui.moveTo(1830, 450)
+    pyautogui.moveTo(var.rand)
 
 
 def open_IQ():
-    pyautogui.click(334, 1052)
+    pyautogui.click(var.chrome)
     move_cursor()
     time.sleep(1)
 
 
 def put():
-    pyautogui.click(1830, 869)
+    pyautogui.click(var.put)
     move_cursor()
 
 
 def call():
-    pyautogui.click(1830, 730)
+    pyautogui.click(var.call)
     move_cursor()
 
 
 def new_position():
-    pyautogui.click(1830, 805)
+    pyautogui.click(var.newpos)
     move_cursor()
 
 
 def get_price_data(screen):
     price_data = np.array([])
-    for x in range(584, 1245):
-        for y in range(265, 799):
+    for x in range(var.xstart, var.xend):
+        for y in range(var.ystart, var.yend):
             pixel_color = screen.getpixel((x, y))
             if pixel_color == (43, 171, 63):
                 price_data = np.append(price_data, -y)
@@ -58,14 +58,13 @@ def decide_bet(screen):
     fit_func = np.polyfit(price_data_x, price_data, 1)
     fit = np.polyval(fit_func, price_data_x)
     error = price_data - fit
-    std_limit = 2 * np.std(error)
+    std_limit = var.stdfactor * np.std(error)
     dot_y = price_data[-1]
     last_fit = fit[-1]
-    m = 0
-    if dot_y > last_fit + std_limit and fit_func[0] < m:
+    if dot_y > last_fit + std_limit and fit_func[0] < var.slope:
         put()
         return True
-    elif dot_y < last_fit - std_limit and fit_func[0] > -m:
+    elif dot_y < last_fit - std_limit and fit_func[0] > -var.slope:
         call()
         return True
     else:
@@ -77,7 +76,7 @@ bet_done = False
 while True:
     screen = pyautogui.screenshot()
     seconds = datetime.datetime.now().second
-    if 14 <= seconds < 23:
+    if var.timelower <= seconds < var.timeupper:
         bet_done = decide_bet(screen)
         if bet_done:
             time.sleep(20)
