@@ -60,17 +60,18 @@ def decide_bet(screen):
     fit_func = np.polyfit(price_data_x, price_data, 1)
     fit = np.polyval(fit_func, price_data_x)
     error = price_data - fit
-    if var.timeupper-9 <= seconds < var.timeupper:
+    currentsec = datetime.datetime.now().second
+    if var.timeupper-9 <= currentsec < var.timeupper:
         factor = var.stdfactor
     else:
-        factor = var.stdfactor * (1 + 1.5*(11-datetime.datetime.now().second)/11)       #dynamic limit
+        factor = var.stdfactor * (1 + 1.5*(11-currentsec)/11)       #dynamic limit
     std_limit = factor * np.std(error)
     dot_y = price_data[-1]
     last_fit = fit[-1]
-    if dot_y > last_fit + std_limit and (mean2-mean1 > 140 or price_data[-1]-mean2 > 150):
+    if dot_y > last_fit + std_limit and (mean2-mean1 > 140 or price_data[-1]-mean2 > 150 and currentsec > var.timelower+10):
         put()
         return True
-    elif dot_y < last_fit - std_limit and (mean1 - mean2 > 140 or mean2 - price_data[-1]):
+    elif dot_y < last_fit - std_limit and (mean1 - mean2 > 140 or mean2 - price_data[-1] and currentsec > var.timelower+10):
         call()
         return True
     else:
@@ -83,7 +84,7 @@ while True:
     screen = pyautogui.screenshot()
     seconds = datetime.datetime.now().second
     if var.timelower <= seconds < var.timeupper:
-        bet_done = decide_bet(screen)
+        bet_done = decide_bet(screen, seconds)
         if bet_done:
             time.sleep(20)
         else:
