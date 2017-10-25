@@ -55,30 +55,31 @@ def plot_state(price_data_x, price_data, fit, std_limit):
 
 def decide_bet(screen):
     price_data = get_price_data(screen)
-    mean1 = np.mean(price_data)
-    mean2 = np.mean(price_data[int(6 * len(price_data) / 7):len(price_data)])
-    price_data_x = np.array(range(price_data.size))
-    fit_func = np.polyfit(price_data_x, price_data, 1)
-    fit = np.polyval(fit_func, price_data_x)
-    error = price_data - fit
-    currentsec = datetime.datetime.now().second
-    if var.timeupper - 9 <= currentsec < var.timeupper:
-        factor = var.stdfactor
-    else:
-        factor = var.stdfactor * (1 + 1.5 * (11 - currentsec) / 11)  # dynamic limit
-    std_limit = factor * np.std(error)
-    dot_y = price_data[-1]
-    last_fit = fit[-1]
-    if dot_y > last_fit + std_limit and (
-                mean2 - mean1 > 140 or (price_data[-1] - mean2 > 150 and currentsec > var.timelower + 10)):
-        put()
-        return True
-    elif dot_y < last_fit - std_limit and (
-                mean1 - mean2 > 140 or (mean2 - price_data[-1] > 150 and currentsec > var.timelower + 10)):
-        call()
-        return True
-    else:
-        return False
+    if price_data is not None:
+        mean1 = np.mean(price_data)
+        mean2 = np.mean(price_data[int(6 * len(price_data) / 7):len(price_data)])
+        price_data_x = np.array(range(price_data.size))
+        fit_func = np.polyfit(price_data_x, price_data, 1)
+        fit = np.polyval(fit_func, price_data_x)
+        error = price_data - fit
+        currentsec = datetime.datetime.now().second
+        if var.timeupper - 9 <= currentsec < var.timeupper:
+            factor = var.stdfactor
+        else:
+            factor = var.stdfactor * (1 + 0.75 * (11 - currentsec) / 11)  # dynamic limit
+        std_limit = factor * np.std(error)
+        dot_y = price_data[-1]
+        last_fit = fit[-1]
+        if dot_y > last_fit + std_limit and (
+                    mean2 - mean1 > 140 or (price_data[-1] - mean2 > 150 and currentsec > var.timelower + 10)):
+            put()
+            return True
+        elif dot_y < last_fit - std_limit and (
+                    mean1 - mean2 > 140 or (mean2 - price_data[-1] > 150 and currentsec > var.timelower + 10)):
+            call()
+            return True
+        else:
+            return False
 
 
 open_IQ()
@@ -89,7 +90,7 @@ while True:
     if var.timelower <= seconds < var.timeupper:
         bet_done = decide_bet(screen)
         if bet_done:
-            time.sleep(20)
+            time.sleep(25)
         else:
             pass
         new_position()

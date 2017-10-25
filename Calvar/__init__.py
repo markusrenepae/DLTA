@@ -17,7 +17,8 @@ ystart = 265
 yend = 799
 
 timelower = 1           #Bet-deciding starts when the system time is XX:XX.13
-timeupper = 20          #Bet-deciding ends when the system time is XX:XX.22
+timeupper = 19
+#Bet-deciding ends when the system time is XX:XX.22
 
 stdfactor = 2
 slope = 0
