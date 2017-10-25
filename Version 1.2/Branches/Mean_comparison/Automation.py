@@ -71,11 +71,11 @@ def decide_bet(screen):
         dot_y = price_data[-1]
         last_fit = fit[-1]
         if dot_y > last_fit + std_limit and (
-                    mean2 - mean1 > 140 or (price_data[-1] - mean2 > 150 and currentsec > var.timelower + 10)):
+                    mean2 - mean1 > 170 or (price_data[-1] - mean2 > 200 and currentsec > var.timelower + 10)):
             put()
             return True
         elif dot_y < last_fit - std_limit and (
-                    mean1 - mean2 > 140 or (mean2 - price_data[-1] > 150 and currentsec > var.timelower + 10)):
+                    mean1 - mean2 > 170 or (mean2 - price_data[-1] > 200 and currentsec > var.timelower + 10)):
             call()
             return True
         else:
