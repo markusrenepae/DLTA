@@ -23,4 +23,9 @@ stdfactor = 2
 slope = 0
 
 
-#testmessage
+'''Method parameters'''
+
+xmoodstart = 2
+xmoodend = 3
+ymoodstart = 4
+ymoodend = 7

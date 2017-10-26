@@ -28,3 +28,4 @@ Short conclusion: Losing streaks appear to be too high and risky.
 Used version: DLTA 1.2.1
 ----------------------
 
+git update-index --assume-unchanged __init__.py
