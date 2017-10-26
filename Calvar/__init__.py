@@ -21,3 +21,6 @@ timeupper = 18.5         #Bet-deciding ends when the system time is XX:XX.22
 
 stdfactor = 2
 slope = 0
+
+
+#testmessage
