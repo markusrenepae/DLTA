@@ -23,4 +23,4 @@ def mean_splitter(price_data, n):
     for i in range(n-1):
         means.append(np.mean(price_data[int(i * len(price_data) / (n-1)):int((i+1) * len(price_data) / (n-1))]))
     means.append(np.mean(price_data[int((n-2) * len(price_data) / (n-1))::]))
-
+    return means

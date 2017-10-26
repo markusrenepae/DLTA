@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fcbe9c2-8f57-45b4-ac47-858cf0bb878f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Calvar/__init__.py" afterPath="$PROJECT_DIR$/Calvar/__init__.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Calvar/.gitignore" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Methods/__init__.py" afterPath="$PROJECT_DIR$/Methods/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Older versions/Version 1.1/Resultfile" afterPath="$PROJECT_DIR$/Older versions/Version 1.1/Resultfile" />
     </list>
     <ignored path="DLTA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +45,8 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Methods/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+            <state relative-caret-position="302">
+              <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -71,16 +69,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
               <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Calvar/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -665,7 +653,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509044244758</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Version 1.2.6. Sample methods are halway implemented.">
+      <created>1509044839007</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1509044839007</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -821,8 +816,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Methods/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        <state relative-caret-position="302">
+          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
